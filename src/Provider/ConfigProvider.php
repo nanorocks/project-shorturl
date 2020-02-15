@@ -21,6 +21,23 @@ class ConfigProvider implements ServiceProviderInterface
                 'path' => __DIR__ . '/../View/',
                 'cache' => false
             ],
+//            'db' => [
+//                'driver'    => 'mysql',
+//                'host'      => '107.189.6.84',
+//                'database'  => 'nankovmk_shorturl',
+//                'username'  => 'nankovmk_shorturl',
+//                'password'  => 'confusionsnake32;',
+//                'charset'   => 'utf8',
+//                'collation' => 'utf8_unicode_ci',
+//                'prefix'    => '',
+//            ],
+            'db' => [
+                'driver' => 'sqlite',
+                'database' => __DIR__ . '/../Storage/database.sqlite',
+                'charset'   => 'utf8',
+                'collation' => 'utf8_unicode_ci',
+                'prefix'    => '',
+            ]
         ];
     }
 }

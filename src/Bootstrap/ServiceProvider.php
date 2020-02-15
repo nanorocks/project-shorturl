@@ -4,6 +4,7 @@ namespace App\Bootstrap;
 
 use App\Provider\AppProvider;
 use App\Provider\ConfigProvider;
+use App\Provider\DatabaseProvider;
 use App\Provider\ErrorProvider;
 use App\Provider\RouteProvider;
 use App\Provider\TemplateProvider;
@@ -16,7 +17,8 @@ class ServiceProvider
         $pimple->register(new RouteProvider())
             ->register(new ConfigProvider())
             ->register(new TemplateProvider())
-            ->register(new ErrorProvider());
+            ->register(new ErrorProvider())
+            ->register(new DatabaseProvider());
 
         return $pimple;
     }

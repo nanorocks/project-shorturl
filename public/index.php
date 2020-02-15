@@ -5,10 +5,9 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Pimple\Container;
 use App\Bootstrap\ServiceProvider;
 use App\Bootstrap\RequestHandler;
 
-$pimple = new Container();
-ServiceProvider::start($pimple);
-RequestHandler::start($pimple, $pimple['route']);
+$container = \App\Bootstrap\Container::get();
+ServiceProvider::start($container);
+RequestHandler::start($container, $container['route']);
