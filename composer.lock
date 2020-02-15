@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "651bfb07538d58e9678452e1e1c321b7",
+    "content-hash": "311be16265342c603b1182ab88c32578",
     "packages": [
         {
             "name": "bramus/router",
@@ -122,7 +122,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v6.14.0",
+            "version": "v6.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -267,6 +267,51 @@
                 "sql"
             ],
             "time": "2020-02-04T14:04:17+00:00"
+        },
+        {
+            "name": "illuminate/events",
+            "version": "v6.15.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/events.git",
+                "reference": "fbcc805c869521b3fa90eee9175bb5b15ec8ffd4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/fbcc805c869521b3fa90eee9175bb5b15ec8ffd4",
+                "reference": "fbcc805c869521b3fa90eee9175bb5b15ec8ffd4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "^6.0",
+                "illuminate/contracts": "^6.0",
+                "illuminate/support": "^6.0",
+                "php": "^7.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Events\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Events package.",
+            "homepage": "https://laravel.com",
+            "time": "2020-02-11T22:40:40+00:00"
         },
         {
             "name": "illuminate/support",
