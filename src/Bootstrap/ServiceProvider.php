@@ -2,7 +2,6 @@
 
 namespace App\Bootstrap;
 
-use App\Provider\AppProvider;
 use App\Provider\ConfigProvider;
 use App\Provider\DatabaseProvider;
 use App\Provider\ErrorProvider;
@@ -12,14 +11,14 @@ use Pimple\Container;
 
 class ServiceProvider
 {
-    public static function start(Container $pimple) : Container
+    public static function start(Container $container) : Container
     {
-        $pimple->register(new RouteProvider())
+        $container->register(new RouteProvider())
             ->register(new ConfigProvider())
             ->register(new TemplateProvider())
             ->register(new ErrorProvider())
             ->register(new DatabaseProvider());
 
-        return $pimple;
+        return $container;
     }
 }

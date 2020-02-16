@@ -16,12 +16,18 @@ class RequestHandler
     public static function start(Container $container, Router $router)
     {
         $router->get('/',  function () use ($container){
-            $ins = new ViewUrlPageController($container['twig']);
+            $ins = new ViewUrlPageController(
+                $container['twig'],
+                $container['db']['conn']
+            );
             $ins->load();
         });
 
-        $router->get('/store',  function () use ($container){
-            $ins = new ViewUrlPageController($container['twig']);
+        $router->post('/store',  function () use ($container){
+            $ins = new StoreUrlController(
+                $container['twig'],
+                $container['db']['conn']
+            );
             $ins->load();
         });
 

@@ -1,1 +1,28 @@
-hello world
+{% extends "layout/template.twig" %}
+{% block content %}
+        <div class="col-md-6 offset-md-3">
+            <form method="post" action="/store" novalidate>
+                <div class="form-group bmd-form-group"> <!-- manually specified -->
+                    <label for="url" class="bmd-label-floating">Enter your url</label>
+                    <input type="url" class="form-control" name="url" id="url" required>
+                </div>
+                <div class="text-center">
+                    <span class="form-group bmd-form-group"> <!-- needed to match padding for floating labels -->
+                        <button type="submit" class="btn btn-outline-primary">Submit</button>
+                    </span>
+                </div>
+            </form>
+            <div class="alert alert-success p-3" role="alert">
+                <button type="submit" class="btn btn-outline-primary btn-sm mr-4">copy</button>
+                <span>This is a success alert—check it out! </span>
+            </div>
+        </div>
+{% endblock %}
+{% block js %}
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcPc9kUAAAAAIWjFoEn7DCH-RdRCemUmnvLz2_z"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcPc9kUAAAAAIWjFoEn7DCH-RdRCemUmnvLz2_z', {action: 'homepage'});
+        });
+    </script>
+{% endblock %}
