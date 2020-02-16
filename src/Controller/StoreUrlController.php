@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Persistent\ControllerInterface;
+use Illuminate\Database\Connection;
 
 /**
  * Class StoreUrlController
@@ -13,15 +14,19 @@ class StoreUrlController implements ControllerInterface
     /**
      * @var \Twig\Environment
      */
-    private $twig;
+    private $template;
 
     /**
      * StoreUrlController constructor.
      * @param \Twig\Environment $twig
      */
-    public function __construct(\Twig\Environment $twig)
+    public function __construct(
+        \Twig\Environment $template,
+        Connection $db
+    )
     {
-        $this->twig = $twig;
+        $this->template = $template;
+        $this->db = $db;
     }
 
     /**
@@ -32,6 +37,6 @@ class StoreUrlController implements ControllerInterface
      */
     public function load()
     {
-        echo $this->twig->render('index.twig', []);
+        echo $this->template->render('index.twig', []);
     }
 }

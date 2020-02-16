@@ -3,7 +3,6 @@
 namespace App\Provider;
 
 use Illuminate\Database\Capsule\Manager;
-use Illuminate\Database\Connection;
 use Illuminate\Events\Dispatcher;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
@@ -15,20 +14,24 @@ class DatabaseProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $container['db'] = function ($container) : Manager
+        $container['db'] = function ($container) : array
         {
             $capsule = new Manager();
             $capsule->addConnection(
-                $container['settings']['db'], 'default'
+                $container['settings']['sqlite'], 'default'
             );
 
             $capsule->setEventDispatcher(new Dispatcher(\Illuminate\Container\Container::getInstance()));
             $capsule->setAsGlobal();
+
             $capsule->bootEloquent();
 
-            #return $capsule->getConnection('default');
+            $conn = $capsule->getConnection('default');
 
-            return $capsule;
+            return [
+                'capsule' => $capsule,
+                'conn' => $conn
+            ];
         };
     }
 }
