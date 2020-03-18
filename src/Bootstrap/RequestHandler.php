@@ -2,6 +2,7 @@
 
 namespace App\Bootstrap;
 
+use App\Controller\RedirectUrlController;
 use App\Controller\StoreUrlController;
 use App\Controller\ViewUrlPageController;
 use Bramus\Router\Router;
@@ -26,17 +27,20 @@ class RequestHandler
         $router->post('/store',  function () use ($container){
             $ins = new StoreUrlController(
                 $container['twig'],
-                $container['db']['conn']
+                $container['db']['conn'],
+                $container['url-validator']
             );
             $ins->load();
         });
 
-        $router->get('/',  function () use ($container){
-            $ins = new StoreUrlController($container['twig']);
+        $router->get('/u/{hash}',  function ($hash) use ($container){
+            $ins = new RedirectUrlController(
+                $container['db']['conn'],
+                $hash,
+                $container['twig']
+            );
             $ins->load();
         });
-
-//        $router->get('/u', 'App\Controller\RedirectUrlController@index');
 
         $router->set404(function () use ($container){
             return $container['err404'];
