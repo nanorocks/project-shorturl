@@ -2,8 +2,10 @@
 
 namespace App\Provider;
 
+use App\Validator\UrlValidation;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
+use function foo\func;
 
 /**
  * Class ConfigProvider
@@ -40,6 +42,9 @@ class ConfigProvider implements ServiceProviderInterface
             ]
         ];
 
+        $container['url-validator'] = function($container){
+            return new UrlValidation();
+        };
         
     }
 }

@@ -18,7 +18,7 @@ class DatabaseProvider implements ServiceProviderInterface
         {
             $capsule = new Manager();
             $capsule->addConnection(
-                $container['settings']['sqlite'], 'default'
+                $container['settings']['mysql'], 'default'
             );
 
             $capsule->setEventDispatcher(new Dispatcher(\Illuminate\Container\Container::getInstance()));
