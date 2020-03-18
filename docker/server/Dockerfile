@@ -19,10 +19,13 @@ RUN apk add apache2 php7-apache2
 RUN apk add php7 php7-fpm php7-opcache
 
 # Php modules
-RUN apk add php7-gd php7-mysqli php7-zlib php7-curl php7-session php7-json php7-pdo php7-pdo_mysql php7-sqlite3 php7-iconv sqlite php7-pdo_sqlite
+RUN apk add php7-gd php7-mysqli php7-gmp php7-zlib php7-curl php7-session php7-json php7-pdo php7-pdo_mysql php7-sqlite3 php7-iconv sqlite php7-pdo_sqlite
 
 # Add new apache config -- Fix this
 COPY docker/server/httpd-apache2.conf /etc/apache2/httpd.conf
+
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 RUN sed -i '/LoadModule rewrite_module/s/^#//g' /etc/apache2/httpd.conf && \
     sed -i 's#AllowOverride [Nn]one#AllowOverride All#' /etc/apache2/httpd.conf
