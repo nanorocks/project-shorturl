@@ -15,6 +15,18 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+     /*
+    |--------------------------------------------------------------------------
+    | Google Captcha
+    |--------------------------------------------------------------------------
+    |
+    | This is integrated google v3 captcha
+    |
+    */
+
+    'captchaURl' => env('GOOGLE_CAPTCHA_VERIFY'),
+    'captchaSecret' => env('GOOGLE_CAPTCHA_SECRET'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

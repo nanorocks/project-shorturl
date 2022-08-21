@@ -20,7 +20,7 @@ class CreateTableBrowser extends Migration
             $table->string(Browser::PLATFORM);
             $table->string(Browser::BROWSER_TYPE);
             $table->string(Browser::DEVICE);
-            $table->unsignedBigInteger(Browser::SHORTURL_ID);
+            $table->unsignedBigInteger(Browser::SHORTURL_ID)->index();
             $table->foreign(Browser::SHORTURL_ID)->references('id')->on('short_urls');
             $table->timestamps();
         });
