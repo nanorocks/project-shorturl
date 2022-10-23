@@ -1,15 +1,10 @@
-name: PHP Insights
-
-on: push
-
+on: [push, pull_request]
+name: Main
 jobs:
   phpinsights:
+    name: PHP-Insights
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-
-    - uses: MilesChou/composer-action@master
-      with:
-        args: install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-
-    - uses: stefanzweifel/phpinsights-action@v1.1.1
+    - uses: actions/checkout@master
+    - name: PHP-Insights
+      uses: docker://tienvx/phpinsights-action
