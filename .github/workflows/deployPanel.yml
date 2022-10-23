@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - master
-name: 🚀 Deploy website to cPanel
+name: 🚀 Deploy shorturl app to cPanel
 jobs:
   web-deploy:
     name: 🎉 Deploy
