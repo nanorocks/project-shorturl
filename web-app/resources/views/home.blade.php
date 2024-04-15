@@ -99,13 +99,9 @@
         </div>
         @if (\Session::has('success'))
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <div class="alert alert-secondary mt-5" role="alert" id="toggle-alert-color">
-                    <a href="{!! \Session::get('success') !!}" target="_blank" class="text-dark text-decoration-none">
-                        {!! \Session::get('success') !!}
-                    </a>
-                    <input type="hidden" id="shortUrl" value="{!! \Session::get('success') !!}" />
-                    <img src="https://icons.getbootstrap.com/assets/icons/clipboard.svg" onclick="copyToClipboard()"
-                        id="copy-icon" class="px-2" width="40" />
+                <div style="background: #101827; color: white;" class="alert mt-3" role="alert"
+                    id="toggle-alert-color">
+                    {!! \Session::get('success') !!}
                 </div>
             </div>
         @endif
