@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Short URL | Web App</title>
+    <title>Short URL | Short your URL easily and quickly by populating the form with your long URL</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}">
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
