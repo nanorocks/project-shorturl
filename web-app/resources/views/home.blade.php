@@ -62,18 +62,21 @@
     </style>
 </head>
 
-<body>
+<body style="background: #1f2937; color: white;">
     <div class="px-4 py-5 my-5 text-center">
         <img class="d-block mx-auto mb-4 img-fluid rounded-5" src="{{ asset('img/logo.png') }}" alt="logo"
             width="150">
         <h1 class="display-5 fw-bold">Short URL</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Short your URL easily and quickly by populating the form with your long URL</p>
+            <p class="lead mb-4" style="font-weight: 200">Short your URL easily and quickly by populating the form with
+                your long URL</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <form method="POST" action="{{ route('store.shorturl') }}" onsubmit="event.preventDefault();onSubmit()" id="submit-form">
+                <form method="POST" action="{{ route('store.shorturl') }}" onsubmit="event.preventDefault();onSubmit()"
+                    id="submit-form">
                     @csrf
                     <div class="mb-3">
-                        <input type="url" name="url" class="form-control form-control-lg" id="url"
+                        <input style="background: #101827;" type="url" name="url"
+                            class="form-control form-control-lg border-0 text-white" id="url"
                             aria-describedby="url" required placeholder="http://..." value="{{ old('url') }}">
                         <div id="url" class="form-text">We're not collecting any additional information here.
                         </div>
@@ -81,8 +84,10 @@
                     <div class="d-flex justify-content-center">
                         <div id='recaptcha' class="g-recaptcha" data-sitekey="6LefCJQhAAAAABZHVta9qzpnfbwOaeVc0rF9KVjV"
                             data-callback="onCompleted" data-size="invisible"></div>
-                        <button type="submit" class="btn btn-secondary btn-lg px-4 gap-3">Short me!</button>
-                        <a href="{{ route('home') }}" class="btn btn-outline-secondary btn-lg px-4">Clear form</a>
+                        <button style="font-weight: 200" type="submit"
+                            class="btn btn-secondary btn-lg px-4 gap-3 m-1 text-capitalize">Short me!</button>
+                        <a style="font-weight: 200" href="{{ route('home') }}"
+                            class="btn btn-secondary btn-lg px-4 m-1 text-capitalize">Clear form</a>
                     </div>
                 </form>
             </div>
@@ -118,8 +123,7 @@
             grecaptcha.execute();
         }
 
-        function onCompleted(token)
-        {
+        function onCompleted(token) {
             document.getElementById("submit-form").submit();
         }
 
