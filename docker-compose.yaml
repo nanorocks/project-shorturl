@@ -1,16 +1,16 @@
 version: '3.1'
 
 services:
-
-  lara-share:
+  shorturl:
+    container_name: shorturl
     build:
       context: .
       dockerfile: .docker/Dockerfile
-    image: 'lara-share'
+    image: 'shorturl'
     ports:
-      - 80:80
+      - 8888:80
     volumes:
-       - ./web-app:/var/www/html
+      - ./web-app:/var/www/html
 
   database:
     platform: linux/x86_64
@@ -30,9 +30,10 @@ services:
       ADMINER_PLUGINS: tables-filter tinymce
     ports:
       - 54320:8080
+
   mailhog:
     image: mailhog/mailhog:latest
     restart: always
     ports:
       - 1025:1025
-      - 8025:8025    
+      - 8025:8025
