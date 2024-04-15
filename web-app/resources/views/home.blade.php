@@ -90,17 +90,20 @@
                         <a style="font-weight: 200" href="{{ route('home') }}"
                             class="btn btn-secondary btn-lg px-4 m-1 text-capitalize rounded-lg border-0">Clear form</a>
                     </div>
-                    @error('url')
-                        <div style="background: #101827; color: white;" class="alert mt-3 rounded-lg">{{ $message }}
-                        </div>
-                    @enderror
-                    @if (\Session::has('success'))
-                        <div style="background: #101827; color: white;" class="alert mt-3 rounded-lg">
-                            {!! \Session::get('success') !!}
-                        </div>
-                    @endif
+
                 </form>
             </div>
+        </div>
+        <div class="col-lg-6 mx-auto">
+            @error('url')
+                <div style="background: #101827; color: white;" class="alert mt-3 rounded-lg">{{ $message }}
+                </div>
+            @enderror
+            @if (\Session::has('success'))
+                <div style="background: #101827; color: white;" class="alert mt-3 rounded-lg">
+                    {!! \Session::get('success') !!}
+                </div>
+            @endif
         </div>
     </div>
     </div>
