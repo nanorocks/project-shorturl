@@ -85,18 +85,17 @@
                         <div id='recaptcha' class="g-recaptcha" data-sitekey="6LefCJQhAAAAABZHVta9qzpnfbwOaeVc0rF9KVjV"
                             data-callback="onCompleted" data-size="invisible"></div>
                         <button style="font-weight: 200" type="submit"
-                            class="btn btn-secondary btn-lg px-4 gap-3 m-1 text-capitalize">Short me!</button>
+                            class="btn btn-secondary btn-lg px-4 gap-3 m-1 text-capitalize rounded-lg border-0">Short
+                            me!</button>
                         <a style="font-weight: 200" href="{{ route('home') }}"
-                            class="btn btn-secondary btn-lg px-4 m-1 text-capitalize">Clear form</a>
+                            class="btn btn-secondary btn-lg px-4 m-1 text-capitalize rounded-lg border-0">Clear form</a>
                     </div>
+                    @error('url')
+                        <div style="background: #101827; color: white;" class="alert mt-3 rounded-lg">{{ $message }}
+                        </div>
+                    @enderror
                 </form>
             </div>
-
-        </div>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            @error('url')
-                <div class="alert alert-danger mt-5">{{ $message }}</div>
-            @enderror
         </div>
         @if (\Session::has('success'))
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
