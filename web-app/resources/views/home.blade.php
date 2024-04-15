@@ -94,17 +94,15 @@
                         <div style="background: #101827; color: white;" class="alert mt-3 rounded-lg">{{ $message }}
                         </div>
                     @enderror
+                    @if (\Session::has('success'))
+                        <div style="background: #101827; color: white;" class="alert mt-3 rounded-lg">
+                            {!! \Session::get('success') !!}
+                        </div>
+                    @endif
                 </form>
             </div>
         </div>
-        @if (\Session::has('success'))
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <div style="background: #101827; color: white;" class="alert mt-3" role="alert"
-                    id="toggle-alert-color">
-                    {!! \Session::get('success') !!}
-                </div>
-            </div>
-        @endif
+
     </div>
     </div>
 
