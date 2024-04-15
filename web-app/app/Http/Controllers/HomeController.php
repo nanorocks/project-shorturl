@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Ramsey\Uuid\Uuid;
 use App\Models\ShortUrl;
-
-use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreUrlRequest;
+use Illuminate\Support\Facades\Artisan;
 
 class HomeController extends Controller
 {
@@ -18,7 +17,6 @@ class HomeController extends Controller
 
     public function store(StoreUrlRequest $request)
     {
-
         $isValidCaptcha = Http::asForm()->post(config('app.captchaURl'), [
             'secret' => config('app.captchaSecret'),
             'response' => $request['g-recaptcha-response']
@@ -53,5 +51,19 @@ class HomeController extends Controller
         }
 
         return redirect($shortUrl->url);
+    }
+
+    public function optimize()
+    {
+        Artisan::call('optimize:clear');
+
+        return redirect()->back();
+    }
+
+    public function cacheClear()
+    {
+        Artisan::call('cache:clear');
+
+        return "Cache cleared!";
     }
 }

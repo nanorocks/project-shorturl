@@ -20,3 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/short-url', [HomeController::class, 'store'])->name('store.shorturl');
 
 Route::get('/{uuid}', [HomeController::class, 'serveUrl'])->name('serve.url');
+
+Route::get('/optimize', [HomeController::class, 'optimize'])->name('serve.url.optimize');
+
+Route::get('/cache-clear', [HomeController::class, 'cacheClear'])->name('serve.url.cache.clear');

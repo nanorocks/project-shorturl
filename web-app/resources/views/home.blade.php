@@ -102,7 +102,6 @@
                 </form>
             </div>
         </div>
-
     </div>
     </div>
 
@@ -118,34 +117,6 @@
 
         function onCompleted(token) {
             document.getElementById("submit-form").submit();
-        }
-
-        function copyToClipboard() {
-
-            let copyClipboardImg = "https://icons.getbootstrap.com/assets/icons/clipboard-check-fill.svg";
-            let clipboardImg = "https://icons.getbootstrap.com/assets/icons/clipboard.svg";
-
-            let icon = document.getElementById('copy-icon')
-
-            icon.setAttribute('src', copyClipboardImg)
-
-            document.getElementById('toggle-alert-color').classList.toggle('alert-secondary');
-            document.getElementById('toggle-alert-color').classList.toggle('alert-success');
-
-            setTimeout(function() {
-                icon.setAttribute('src', clipboardImg)
-                document.getElementById('toggle-alert-color').classList.toggle('alert-success');
-                document.getElementById('toggle-alert-color').classList.toggle('alert-secondary');
-            }, 2000)
-
-            /* Get the text field */
-            var text = document.getElementById("shortUrl").value;
-
-            navigator.clipboard.writeText(text).then(function() {
-                console.log('Async: Copying to clipboard was successful!');
-            }, function(err) {
-                console.error('Async: Could not copy text: ', err);
-            });
         }
     </script>
 </body>
