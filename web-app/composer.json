@@ -9,17 +9,19 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jenssegers/agent": "^2.6",
-        "laravel/framework": "^8.75",
+        "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "ramsey/uuid": "^4.2"
+        "ramsey/uuid": "^4.2",
+        "symfony/http-client": "^7.0",
+        "symfony/postmark-mailer": "^7.0"
     },
     "require-dev": {
-        "facade/ignition": "^2.5",
+        "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^5.10",
+        "nunomaduro/collision": "^6.1",
         "nunomaduro/phpinsights": "^2.6",
         "phpunit/phpunit": "^9.5.10"
     },
