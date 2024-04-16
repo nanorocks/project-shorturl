@@ -1,4 +1,4 @@
-<div class="text-center pb-2 fixed-bottom h5 text-white" style="font-weight: 100; font-size: 1rem; z-index:auto; background-color: #1f2937">
+<div class="text-center pb-2 fixed-bottom h5 text-white mb-0" style="font-weight: 100; font-size: 1rem; z-index:auto;">
     {{-- <div class="small-divider text-center mt-5"></div> --}}
     <br />
     Developed by <a href="https://nankov.mk" class="text-white">@nanorocks</a>
