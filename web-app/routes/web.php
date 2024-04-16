@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::post('/short-url', [HomeController::class, 'store'])->name('store.shorturl');
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
 
-Route::get('/{uuid}', [HomeController::class, 'serveUrl'])->name('serve.url');
+require __DIR__ . '/auth.php';
 
-Route::get('/optimize', [HomeController::class, 'optimize'])->name('serve.url.optimize');
+Route::middleware('guest')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/cache-clear', [HomeController::class, 'cacheClear'])->name('serve.url.cache.clear');
+    Route::post('/short-url', [HomeController::class, 'store'])->name('store.shorturl');
+
+    Route::get('/{uuid}', [HomeController::class, 'serveUrl'])->name('serve.url');
+});
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/optimize', [HomeController::class, 'optimize'])->name('serve.url.optimize');
+
+    Route::get('/cache-clear', [HomeController::class, 'cacheClear'])->name('serve.url.cache.clear');
+});
