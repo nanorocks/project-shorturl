@@ -32,22 +32,23 @@
         <div>
             <div class="pt-6">
                 <div class="pb-4">
-                    <div id="myForm" class="flex items-center space-x-2">
+                    <div id="myForm" class="flex sm:flex-2 items-center space-x-2">
                         <div class="relative">
                             <input type="text" id="clinetName" wire:model="createClient" placeholder="Client name..."
                                 class="input input-bordered w-56">
-
                         </div>
-                        <button type="button" class="btn btn-primary" wire:click="createClientAction">Submit</button>
-                        <button type="button" class="btn btn-secondary"
-                            wire:click="archiveRevokedAction({{ $archiveRevoked }})">
-                            @if (!$archiveRevoked)
-                                Unarchive revoked
-                            @else
-                                Archive revoked
-                            @endif
-                        </button>
-
+                        <div class="grid grid-cols-2 gap-4">
+                            <button type="button" class="btn btn-primary"
+                                wire:click="createClientAction">Submit</button>
+                            <button type="button" class="btn btn-secondary"
+                                wire:click="archiveRevokedAction({{ $archiveRevoked }})">
+                                @if (!$archiveRevoked)
+                                    Unarchive revoked
+                                @else
+                                    Archive revoked
+                                @endif
+                            </button>
+                        </div>
                     </div>
                     @error('createClient')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
