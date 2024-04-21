@@ -30,5 +30,9 @@ Db creating for project
 	- php artisan key:generate
 	- php artisan migrate:fresh --seed
 	- (for running tests) php artisan test
+	- php artisan db:seed
+	- php artisan migrate
+	- composer i
+	- php artisan passport:keys 
 
 - Default demo user password is: password
