@@ -29,13 +29,13 @@ class CustomClientCredentialsGrant extends Command
         $userId = $this->option('userId');
         $appName = $this->option('appName');
 
-        if (! $userId) {
+        if (!$userId) {
             $this->error('User ID is required.');
 
             return;
         }
 
-        if (! $appName) {
+        if (!$appName) {
             $this->error('App name is required.');
 
             return;
@@ -50,7 +50,7 @@ class CustomClientCredentialsGrant extends Command
         );
 
         $this->info('Passport client credentials grant created successfully:');
-        $this->line('Client ID: '.$client->id);
-        $this->line('Client secret: '.$client->secret);
+        $this->line('Client ID: ' . $client->id);
+        $this->line('Client secret: ' . $client->secret);
     }
 }
