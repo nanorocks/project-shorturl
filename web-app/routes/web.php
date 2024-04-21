@@ -15,6 +15,8 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -27,7 +29,7 @@ Route::view('profile', 'profile')
 require __DIR__ . '/auth.php';
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
     Route::post('/short-url', [HomeController::class, 'store'])->name('store.shorturl');
 
