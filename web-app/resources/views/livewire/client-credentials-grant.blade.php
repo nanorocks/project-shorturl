@@ -37,7 +37,7 @@
                             <input type="text" id="clinetName" wire:model="createClient" placeholder="Client name..."
                                 class="input input-bordered w-56">
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-2 gap-2">
                             <button type="button" class="btn btn-primary text-xs"
                                 wire:click="createClientAction">Submit</button>
                             <button type="button" class="btn btn-secondary text-xs"
