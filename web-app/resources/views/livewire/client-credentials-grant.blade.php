@@ -38,9 +38,9 @@
                                 class="input input-bordered w-56">
                         </div>
                         <div class="grid grid-cols-2 gap-4">
-                            <button type="button" class="btn btn-primary"
+                            <button type="button" class="btn btn-primary text-xs"
                                 wire:click="createClientAction">Submit</button>
-                            <button type="button" class="btn btn-secondary"
+                            <button type="button" class="btn btn-secondary text-xs"
                                 wire:click="archiveRevokedAction({{ $archiveRevoked }})">
                                 @if (!$archiveRevoked)
                                     Unarchive revoked
