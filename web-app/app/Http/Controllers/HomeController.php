@@ -30,7 +30,7 @@ class HomeController extends Controller
             ShortUrl::UUID => $guid
         ]);
 
-        return response()->json('success', sprintf("%s/%s", config('app.url'),  $shortUrl->uuid));
+        return ['success' => sprintf("%s/%s", config('app.url'),  $shortUrl->uuid)];
     }
 
     public function store(StoreUrlRequest $request)
