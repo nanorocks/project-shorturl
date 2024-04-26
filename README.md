@@ -2,8 +2,6 @@
 
 Even nanorocks can have personal url shortener
 
-[![🚀 Deploy shorturl app to cPanel](https://github.com/nanorocks/project-shorturl/actions/workflows/deployPanel.yml/badge.svg)](https://github.com/nanorocks/project-shorturl/actions/workflows/deployPanel.yml)
-
 ### Docker devbox
 The project is build on top of docker devbox so, all you need is to have docker desktop installed on you pc and then you can navigate to root to run: 
 
