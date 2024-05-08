@@ -79,9 +79,25 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard') }}">SSO Login</a>
-                        </li>
+                        @auth
+                            <li class="nav-item mb-3">
+                                You're logged in as: {{ Auth::user()->name }}
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('dashboard') }}"> {{ __('Dashboard') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('profile') }}"> {{ __('Profile') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}"> {{ __('Logout') }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('sso.redirect') }}"> {{ __('SSO Log in ') }}</a>
+                            </li>
+                        @endauth
+
                     </ul>
                 </div>
             </div>
@@ -95,8 +111,8 @@
             <p class="lead mb-4" style="font-weight: 200">Short your URL easily and quickly by populating the form with
                 your long URL</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <form method="POST" action="{{ route('store.shorturl') }}" onsubmit="event.preventDefault();onSubmit()"
-                    id="submit-form">
+                <form method="POST" action="{{ route('store.shorturl') }}"
+                    onsubmit="event.preventDefault();onSubmit()" id="submit-form">
                     @csrf
                     <div class="mb-3">
                         <input style="background: #101827;" type="url" name="url"

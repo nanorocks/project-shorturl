@@ -112,4 +112,21 @@ return [
 
     'password_timeout' => 10800,
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | SSO
+    |--------------------------------------------------------------------------
+    |
+    | Here we define the SSO credentials to andrej.nankov.mk
+    |
+    */
+
+    'sso_url' => env('SSO_URL'),
+
+    'sso_client_id' => env('SSO_CLIENT_ID'),
+
+    'sso_client_secret' => env('SSO_CLIENT_SECRET'),
+
+    'sso_redirect' => env('SSO_REDIRECT'),
 ];

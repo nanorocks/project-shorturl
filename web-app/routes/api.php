@@ -19,7 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth')->group(function () {
+    Route::post('/v1/short-url', [HomeController::class, 'storeApi'])->name('api.store.short.url');
 
-Route::post('/v1/short-url', [HomeController::class, 'storeApi'])->name('api.store.short.url');
-
-Route::get('/{uuid}', [HomeController::class, 'serveUrl'])->name('api.serve.url');
+    Route::get('/{uuid}', [HomeController::class, 'serveUrl'])->name('api.serve.url');
+});

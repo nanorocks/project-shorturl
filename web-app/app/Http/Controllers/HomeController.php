@@ -5,12 +5,31 @@ namespace App\Http\Controllers;
 use Ramsey\Uuid\Uuid;
 use App\Models\ShortUrl;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreUrlRequest;
 use Illuminate\Support\Facades\Artisan;
 
 class HomeController extends Controller
 {
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
     public function index()
     {
         return view('home');
@@ -21,7 +40,7 @@ class HomeController extends Controller
         $shortUrl = ShortUrl::where(ShortUrl::URL, $request->url)->first();
 
         if (!is_null($shortUrl)) {
-            return response()->json('success', sprintf("%s/%s", config('app.url'),  $shortUrl->uuid));
+            return ['success' => sprintf("%s/%s", config('app.url'),  $shortUrl->uuid)];
         }
 
         $guid = Str::random(8);

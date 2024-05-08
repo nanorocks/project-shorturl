@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SSOController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,26 +15,35 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/optimize', [HomeController::class, 'optimize'])
+    ->name('serve.url.optimize')
+    ->middleware('auth');
 
+Route::get('/cache-clear', [HomeController::class, 'cacheClear'])
+    ->name('serve.url.cache.clear')
+    ->middleware('auth');
 
 Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+    ->name('profile')
+    ->middleware('auth');
 
-require __DIR__ . '/auth.php';
+Route::get('/logout', [SSOController::class, 'logout'])
+    ->name('logout')
+    ->middleware('auth');
+
+Route::get('/dashboard', [HomeController::class, 'dashboard'])
+    ->name('dashboard')
+    ->middleware('auth');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/redirect', [SSOController::class, 'redirect'])->name('sso.redirect');
 
 Route::post('/short-url', [HomeController::class, 'store'])->name('store.shorturl');
 
+Route::get('/auth/callback', [SSOController::class, 'callback'])->name('sso.token');
+
 Route::get('/{uuid}', [HomeController::class, 'serveUrl'])->name('serve.url');
 
-Route::middleware('auth')->group(function () {
-
-    Route::get('/optimize', [HomeController::class, 'optimize'])->name('serve.url.optimize');
-
-    Route::get('/cache-clear', [HomeController::class, 'cacheClear'])->name('serve.url.cache.clear');
-});
+require __DIR__ . '/auth.php';
