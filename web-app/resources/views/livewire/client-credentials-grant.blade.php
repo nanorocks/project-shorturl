@@ -14,7 +14,7 @@
     @endif
     <div class="card pt-4">
         <div class="text-center block">
-            <h1 class="text-3xl font-extrabold text-center my-6 dark:text-white">Connections <br />
+            <h1 class="text-3xl font-extrabold text-center my-6 dark:text-white">Dashboard <br />
                 <small>OAuth2 - Client credentials grant</small>
             </h1>
 
