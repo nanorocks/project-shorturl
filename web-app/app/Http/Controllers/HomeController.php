@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Ramsey\Uuid\Uuid;
 use App\Models\ShortUrl;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreUrlRequest;
 use Illuminate\Support\Facades\Artisan;
@@ -23,7 +24,7 @@ class HomeController extends Controller
             return response()->json('success', sprintf("%s/%s", config('app.url'),  $shortUrl->uuid));
         }
 
-        $guid = str_replace('-', '', Uuid::uuid4());
+        $guid = Str::random(8);
 
         $shortUrl = ShortUrl::create([
             ShortUrl::URL => $request->url,
@@ -50,7 +51,7 @@ class HomeController extends Controller
             return redirect()->back()->withInput()->with('success', sprintf("%s/%s", config('app.url'),  $shortUrl->uuid));
         }
 
-        $guid = str_replace('-', '', Uuid::uuid4());
+        $guid = Str::random(8);
 
         $shortUrl = ShortUrl::create([
             ShortUrl::URL => $request->url,

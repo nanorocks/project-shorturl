@@ -28,13 +28,9 @@ Route::view('profile', 'profile')
 
 require __DIR__ . '/auth.php';
 
-Route::middleware('guest')->group(function () {
+Route::post('/short-url', [HomeController::class, 'store'])->name('store.shorturl');
 
-
-    Route::post('/short-url', [HomeController::class, 'store'])->name('store.shorturl');
-
-    Route::get('/{uuid}', [HomeController::class, 'serveUrl'])->name('serve.url');
-});
+Route::get('/{uuid}', [HomeController::class, 'serveUrl'])->name('serve.url');
 
 Route::middleware('auth')->group(function () {
 
